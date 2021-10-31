@@ -1,0 +1,12 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+    <br>
+    <h4>Are you sure you want to delete "{{ item }}"?</h4>
+    <br>
+    <form action="{% url 'delete_contact' item.id %}" method="post">
+        {% csrf_token %}
+        <a class="btn btn-primary" href="{% url 'contacts' %}">Go back</a>
+        <input class="btn btn-danger" type="submit" value="Submit"/>
+    </form>
+{% endblock %}

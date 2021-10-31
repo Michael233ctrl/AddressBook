@@ -1,10 +1,20 @@
 <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
-        <a type="button" href="{% url 'add_contact' %}" class="btn btn-primary">Add Contact</a>
-        <a class="navbar-brand" href="{% url 'contacts' %}">Address Book</a>
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        {% if request.path != '/add-contact/' %}
+            <a type="button" href="{% url 'add_contact' %}" class="btn btn-primary">Add Contact</a>
+        {% endif %}
+        {% if request.path == '/' %}
+            <a class="navbar-brand" href="{% url 'contacts' %}">Address Book</a>
+        {% else %}
+            <a class="btn btn-outline-dark" href="{% url 'contacts' %}">Back To Home</a>
+        {% endif %}
+
+        <form action="{% url 'search_contact' %}" method="POST" class="d-flex">
+            {% csrf_token %}
+            <input class="form-control me-2" name='searched' type="search" placeholder="Search" aria-label="Search">
+
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
     </div>
 </nav>
+
