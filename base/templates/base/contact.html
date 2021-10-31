@@ -1,6 +1,13 @@
 {% extends 'base/main.html' %}
 
 {% block content %}
+
+    {% if action == 'add' %}
+        <h3>Add Contact</h3>
+    {% elif action == 'edit' %}
+        <h3>Edit Contact</h3>
+    {% endif %}
+
     {% for message in messages %}
         <div class="alert alert-danger alert-dismissible fade show" role="alert" style="height: 50px;">
             <strong>{{ message }}</strong>
@@ -10,6 +17,6 @@
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" class="btn btn-primary" value="Add Contact">
+        <input type="submit" class="btn btn-primary" value="Submit">
     </form>
 {% endblock %}

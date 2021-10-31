@@ -2,7 +2,7 @@ from django import forms
 from .models import Contact
 
 
-class AddContactForm(forms.ModelForm):
+class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
         fields = '__all__'
@@ -14,3 +14,6 @@ class AddContactForm(forms.ModelForm):
             'country': forms.TextInput(attrs={'class': 'form-control'}),
             'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
         }
+
+
+
