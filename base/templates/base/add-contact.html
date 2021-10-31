@@ -1,0 +1,15 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+    {% for message in messages %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="height: 50px;">
+            <strong>{{ message }}</strong>
+        </div>
+    {% endfor %}
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-primary" value="Add Contact">
+    </form>
+{% endblock %}
